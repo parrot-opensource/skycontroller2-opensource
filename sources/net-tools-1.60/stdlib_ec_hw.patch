@@ -1,0 +1,11 @@
+--- a/lib/ec_hw.c	1999-11-20 22:02:53.000000000 +0100
++++ b/lib/ec_hw.c	2014-09-18 11:05:16.767393212 +0200
+@@ -12,6 +12,8 @@
+  *              Foundation;  either  version 2 of the License, or  (at
+  *              your option) any later version.
+  */
++#include <stdlib.h>
++
+ #include "config.h"
+ 
+ #if HAVE_HWEC

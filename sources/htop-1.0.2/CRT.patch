@@ -1,0 +1,14 @@
+--- ./CRT.h	2012-10-19 20:59:28.000000000 +0200
++++ ./CRT.h	2012-11-20 10:06:15.818722914 +0100
+@@ -109,9 +109,9 @@
+ 
+ extern int CRT_cursorX;
+ 
+-char* CRT_termType;
++extern char* CRT_termType;
+ 
+-void *backtraceArray[128];
++extern void *backtraceArray[128];
+ 
+ // TODO: pass an instance of Settings instead.
+ 

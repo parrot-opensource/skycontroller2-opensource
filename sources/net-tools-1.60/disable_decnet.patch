@@ -1,0 +1,10 @@
+--- a/config.in	2000-05-21 16:32:12.000000000 +0200
++++ b/config.in	2014-09-18 11:14:20.245252440 +0200
+@@ -57,7 +57,6 @@
+ bool 'Rose (packet radio) protocol family' HAVE_AFROSE n
+ bool 'X.25 (CCITT) protocol family' HAVE_AFX25 y
+ bool 'Econet protocol family' HAVE_AFECONET n
+-bool 'DECnet protocol family' HAVE_AFDECnet n
+ bool 'Ash protocol family' HAVE_AFASH n
+ *
+ *

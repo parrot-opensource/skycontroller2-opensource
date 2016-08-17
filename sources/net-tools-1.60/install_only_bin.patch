@@ -1,0 +1,11 @@
+--- net-tools-1.60.old/Makefile	2015-04-14 09:43:30.709624000 +0200
++++ net-tools-1.60.new/Makefile	2015-04-14 09:48:04.626615270 +0200
+@@ -134,7 +134,7 @@
+ 
+ config: 	cleanconfig config.h
+ 
+-install:	all savebin installbin installdata
++install:	installbin
+ 
+ update: 	all installbin installdata
+ 

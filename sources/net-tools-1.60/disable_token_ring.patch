@@ -1,0 +1,36 @@
+diff -Nru net-tools-1.60.old/config.h net-tools-1.60.new/config.h
+--- net-tools-1.60.old/config.h	2015-04-10 13:30:21.217697131 +0200
++++ net-tools-1.60.new/config.h	2015-04-10 13:28:11.213855228 +0200
+@@ -50,7 +50,7 @@
+ #define HAVE_HWPPP 1
+ #define HAVE_HWTUNNEL 1
+ #define HAVE_HWSTRIP 0
+-#define HAVE_HWTR 1
++#define HAVE_HWTR 0
+ #define HAVE_HWAX25 1
+ #define HAVE_HWROSE 0
+ #define HAVE_HWNETROM 1
+diff -Nru net-tools-1.60.old/config.in net-tools-1.60.new/config.in
+--- net-tools-1.60.old/config.in	2015-04-10 13:30:29.478196998 +0200
++++ net-tools-1.60.new/config.in	2015-04-10 13:28:06.881594792 +0200
+@@ -69,7 +69,7 @@
+ bool 'PPP (serial line) support' HAVE_HWPPP y
+ bool 'IPIP Tunnel support' HAVE_HWTUNNEL y
+ bool 'STRIP (Metricom radio) support' HAVE_HWSTRIP n
+-bool 'Token ring (generic) support' HAVE_HWTR y
++bool 'Token ring (generic) support' HAVE_HWTR n
+ bool 'AX25 (packet radio) support' HAVE_HWAX25 y
+ bool 'Rose (packet radio) support' HAVE_HWROSE n
+ bool 'NET/ROM (packet radio) support' HAVE_HWNETROM y
+diff -Nru net-tools-1.60.old/config.make net-tools-1.60.new/config.make
+--- net-tools-1.60.old/config.make	2015-04-10 13:30:35.506561902 +0200
++++ net-tools-1.60.new/config.make	2015-04-10 13:28:09.065726085 +0200
+@@ -17,7 +17,7 @@
+ HAVE_HWPPP=1
+ HAVE_HWTUNNEL=1
+ HAVE_HWSTRIP=0
+-HAVE_HWTR=1
++HAVE_HWTR=0
+ HAVE_HWAX25=1
+ # HAVE_HWROSE=0
+ HAVE_HWNETROM=1

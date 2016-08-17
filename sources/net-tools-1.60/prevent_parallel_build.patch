@@ -1,0 +1,9 @@
+--- net-tools-1.60.old/Makefile	2001-04-15 16:34:31.000000000 +0200
++++ net-tools-1.60.new/Makefile	2015-04-14 09:43:30.709624585 +0200
+@@ -260,4 +260,6 @@
+ 	$(MAKE) -C man install
+ 	$(MAKE) -C po install
+ 
++.NOTPARALLEL:
++
+ # End of Makefile.
