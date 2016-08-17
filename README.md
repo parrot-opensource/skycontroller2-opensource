@@ -1,5 +1,5 @@
 Open Source Software used in **Parrot SkyController2**.  
-Firmware version: **1.0.0**  
+Firmware version: **1.0.2**  
 Unless stated otherwise, later versions of the firmware
 use these same software modules.
 
@@ -13,13 +13,14 @@ You can download Open Source Archives from following table:
 |License|Package
 |---|---
 |GPL|[busybox](sources/busybox-unknown)
+|GPL|[evtest](sources/evtest-unknown)
 |GPL|[htop](sources/htop-1.0.2)
 |GPL|[lttng-ust (liblttng-ust-ctl/ustctl.c)](sources/lttng-ust-2.1.1)
+|GPL|[memtester](sources/memtester-4.2.2)
 |GPL|[procps](sources/procps-3.2.8)
 |GPL|[tree](sources/tree-1.6.0)
-|GPL|[out/mpp-linux/build/memtester/memtester-4.2.2](sources/None)
-|GPL|[packages/dfu-programmer](sources/None)
-|GPL|[packages/os-debug/system/evtest](sources/None)
+|GPL2|[dfu-programmer](sources/dfu-programmer-unknown)
+|GPL2|[dnsmasq](sources/dnsmasq-2.66)
 |GPL2|[e2fsprogs](sources/e2fsprogs-1.42.11)
 |GPL2|[iftop](sources/iftop-1.0pre4)
 |GPL2|[iio_generic_buffer](sources/iio_generic_buffer-unknown)
