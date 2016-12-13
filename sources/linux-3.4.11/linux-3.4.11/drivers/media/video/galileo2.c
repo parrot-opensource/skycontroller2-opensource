@@ -122,8 +122,9 @@ struct galileo2 {
 	struct v4l2_ctrl              *nd;
 	struct v4l2_ctrl              *ms;
 	struct v4l2_ctrl              *gs;
-	struct v4l2_ctrl              *strobe_source;
 	struct v4l2_ctrl              *strobe_width;
+	struct v4l2_ctrl              *strobe_start;
+	struct v4l2_ctrl              *strobe_enable;
 	struct v4l2_ctrl              *temp_sensor_output;
 };
 
@@ -1047,15 +1048,15 @@ static int galileo2_apply_gain(struct v4l2_subdev *sd)
 static int galileo2_apply_flash_strobe(struct v4l2_subdev *sd)
 {
 	struct galileo2                 *galileo2 = to_galileo2(sd);
-	enum v4l2_flash_strobe_source    strobe_source;
 	union global_reset_mode_config1  glbrst_cfg1;
 	struct i2c_client               *i2c = galileo2->i2c_sensor;
+	int strobe_en;
 
-	strobe_source = galileo2->strobe_source->val;
+	strobe_en = galileo2->strobe_enable->val;
 
 	galileo2_read8(i2c, GLOBAL_RESET_MODE_CONFIG1, &glbrst_cfg1._register);
 
-	if (strobe_source == V4L2_FLASH_STROBE_SOURCE_SOFTWARE) {
+	if (!strobe_en) {
 		glbrst_cfg1.flash_strobe = 0;
 		galileo2_write8(i2c,
 				GLOBAL_RESET_MODE_CONFIG1,
@@ -1672,10 +1673,12 @@ static const struct v4l2_subdev_ops galileo2_ops = {
 };
 
 /* Custom ctrls */
-#define V4L2_CID_GALILEO2_ND           (V4L2_CID_CAMERA_CLASS_BASE + 0x100)
-#define V4L2_CID_GALILEO2_GS           (V4L2_CID_CAMERA_CLASS_BASE + 0x101)
-#define V4L2_CID_GALILEO2_STROBE_WIDTH (V4L2_CID_CAMERA_CLASS_BASE + 0x102)
-#define V4L2_CID_GALILEO2_MS           (V4L2_CID_CAMERA_CLASS_BASE + 0x103)
+#define V4L2_CID_GALILEO2_ND             (V4L2_CID_CAMERA_CLASS_BASE + 0x100)
+#define V4L2_CID_GALILEO2_GS             (V4L2_CID_CAMERA_CLASS_BASE + 0x101)
+#define V4L2_CID_GALILEO2_STROBE_WIDTH   (V4L2_CID_CAMERA_CLASS_BASE + 0x102)
+#define V4L2_CID_GALILEO2_MS             (V4L2_CID_CAMERA_CLASS_BASE + 0x103)
+#define V4L2_CID_GALILEO2_FSTROBE_START  (V4L2_CID_CAMERA_CLASS_BASE + 0x104)
+#define V4L2_CID_GALILEO2_FSTROBE_ENABLE (V4L2_CID_CAMERA_CLASS_BASE + 0x105)
 #define V4L2_CID_GALILEO2_TEMP_SENSOR_OUTPUT \
 	(V4L2_CID_CAMERA_CLASS_BASE + 0x106)
 
@@ -1721,8 +1724,9 @@ static int galileo2_s_ctrl(struct v4l2_ctrl *ctrl)
 		return galileo2_apply_focus(&galileo2->sd);
 	case V4L2_CID_GALILEO2_ND:
 		return galileo2_apply_nd(&galileo2->sd);
-	case V4L2_CID_FLASH_STROBE_SOURCE:
 	case V4L2_CID_GALILEO2_STROBE_WIDTH:
+	case V4L2_CID_GALILEO2_FSTROBE_START:
+	case V4L2_CID_GALILEO2_FSTROBE_ENABLE:
 		return galileo2_apply_flash_strobe(&galileo2->sd);
 	case V4L2_CID_ANALOGUE_GAIN:
 		return galileo2_apply_gain(&galileo2->sd);
@@ -1782,6 +1786,28 @@ static const struct v4l2_ctrl_config galileo2_ctrl_sw = {
 	.max  = 50000,
 	.step = 1,
 	.def  = 100,
+};
+
+static const struct v4l2_ctrl_config galileo2_ctrl_ss = {
+	.ops  = &galileo2_ctrl_ops,
+	.id   = V4L2_CID_GALILEO2_FSTROBE_START,
+	.name = "Flash strobe start delay, in us",
+	.type = V4L2_CTRL_TYPE_INTEGER,
+	.min  = 0,
+	.max  = 50000,
+	.step = 1,
+	.def  = 0,
+};
+
+static const struct v4l2_ctrl_config galileo2_ctrl_se = {
+	.ops  = &galileo2_ctrl_ops,
+	.id   = V4L2_CID_GALILEO2_FSTROBE_ENABLE,
+	.name = "Flash strobe pulse enable state",
+	.type = V4L2_CTRL_TYPE_INTEGER,
+	.min  = 0,
+	.max  = 1,
+	.step = 1,
+	.def  = 0,
 };
 
 static const struct v4l2_ctrl_config galileo2_ctrl_tso = {
@@ -1858,14 +1884,13 @@ static int galileo2_initialize_controls(struct v4l2_subdev *sd)
 	galileo2->strobe_width = v4l2_ctrl_new_custom(hdl,
 						      &galileo2_ctrl_sw, NULL);
 
-	/* Flash Strobe */
-	galileo2->strobe_source =
-		v4l2_ctrl_new_std_menu(hdl,
-				       &galileo2_ctrl_ops,
-				       V4L2_CID_FLASH_STROBE_SOURCE,
-				       V4L2_FLASH_STROBE_SOURCE_EXTERNAL,
-				       ~0x3,
-				       V4L2_FLASH_STROBE_SOURCE_SOFTWARE);
+	/* Flash strobe start */
+	galileo2->strobe_start = v4l2_ctrl_new_custom(hdl,
+						      &galileo2_ctrl_ss, NULL);
+
+	/* Flash strobe enable */
+	galileo2->strobe_enable = v4l2_ctrl_new_custom(hdl,
+						       &galileo2_ctrl_se, NULL);
 
 	/* Analog gain
 	** value based on 'raytrix driver' and checked by i2c sniffing on phone

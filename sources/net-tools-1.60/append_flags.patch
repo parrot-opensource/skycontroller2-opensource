@@ -1,0 +1,14 @@
+diff -ru net-tools-1.60-orig/Makefile net-tools-1.60/Makefile
+--- net-tools-1.60-orig/Makefile
++++ net-tools-1.60/Makefile
+@@ -113,8 +113,8 @@
+ 
+ NET_LIB = $(NET_LIB_PATH)/lib$(NET_LIB_NAME).a
+ 
+-CFLAGS	= $(COPTS) -I. -idirafter ./include/ -I$(NET_LIB_PATH)
+-LDFLAGS	= $(LOPTS) -L$(NET_LIB_PATH)
++CFLAGS	+= $(COPTS) -I. -idirafter ./include/ -I$(NET_LIB_PATH)
++LDFLAGS	+= $(LOPTS) -L$(NET_LIB_PATH)
+ 
+ SUBDIRS	= man/ $(NET_LIB_PATH)/
+ 

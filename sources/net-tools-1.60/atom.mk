@@ -24,7 +24,8 @@ LOCAL_AUTOTOOLS_PATCHES := \
 	disable_metricom_radio.patch \
 	prevent_parallel_build.patch \
 	install_only_bin.patch \
-	disable_token_ring.patch
+	disable_token_ring.patch \
+	append_flags.patch
 
 define LOCAL_AUTOTOOLS_CMD_CONFIGURE
 	cd $(PRIVATE_OBJ_DIR) && make clean && yes '' | \
@@ -34,7 +35,8 @@ endef
 # If both iproute2 and busybox are selected, make certain we win
 LOCAL_LIBRARIES = busybox
 
-LOCAL_AUTOTOOLS_MAKE_INSTALL_ENV := $(TARGET_AUTOTOOLS_CONFIGURE_ENV)
+LOCAL_AUTOTOOLS_MAKE_INSTALL_ENV := \
+	$(TARGET_AUTOTOOLS_CONFIGURE_ENV)
 
 LOCAL_AUTOTOOLS_MAKE_BUILD_ENV := \
 	$(AUTOTOOLS_CONFIGURE_ENV)

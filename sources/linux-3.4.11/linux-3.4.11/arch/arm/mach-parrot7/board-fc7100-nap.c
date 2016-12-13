@@ -437,7 +437,7 @@ static void __init init_board(void)
 	p7brd_export_gpio(P7_GPIO_NR(56), GPIOF_OUT_INIT_HIGH, "LED_LATCH");
 	p7brd_export_gpio(P7_GPIO_NR(57), GPIOF_OUT_INIT_HIGH, "LED_BLANK");
 	p7brd_export_gpio(P7_GPIO_NR(58), GPIOF_OUT_INIT_HIGH, "LED_SIN");
-	p7brd_export_gpio(P7_GPIO_NR(150), GPIOF_OUT_INIT_LOW, "ATMEG_UPDATE");
+	p7brd_export_gpio(P7_GPIO_NR(150), GPIOF_OUT_INIT_HIGH, "ATMEG_UPDATE");
 
 	p7_gpio_interrupt_register(P7_GPIO_NR(140));
 	p7brd_export_gpio(P7_GPIO_NR(140), GPIOF_DIR_IN, "hdmi-it");

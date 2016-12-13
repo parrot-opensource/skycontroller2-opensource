@@ -1,5 +1,5 @@
 Open Source Software used in **Parrot SkyController2**.  
-Firmware version: **1.0.2**  
+Firmware version: **1.0.3**  
 Unless stated otherwise, later versions of the firmware
 use these same software modules.
 
@@ -19,7 +19,7 @@ You can download Open Source Archives from following table:
 |GPL|[memtester](sources/memtester-4.2.2)
 |GPL|[procps](sources/procps-3.2.8)
 |GPL|[tree](sources/tree-1.6.0)
-|GPL2|[dfu-programmer](sources/dfu-programmer-unknown)
+|GPL2|[dfu-programmer](sources/dfu-programmer-0.7.2)
 |GPL2|[dnsmasq](sources/dnsmasq-2.66)
 |GPL2|[e2fsprogs](sources/e2fsprogs-1.42.11)
 |GPL2|[iftop](sources/iftop-1.0pre4)
@@ -32,7 +32,7 @@ You can download Open Source Archives from following table:
 |GPL2|[udevadm](sources/udevadm-164)
 |GPL2|[udevd](sources/udevd-164)
 |GPL2|[usbutils](sources/usbutils-006)
-|GPL2|[util-linux-ng](sources/util-linux-ng-2.26)
+|GPL2|[util-linux-ng](sources/util-linux-ng-2.28)
 |LGPL|[libc-arm-2012-03-fix](sources/libc-arm-2012-03-fix-unknown)
 |LGPL|[libconfig](sources/libconfig-1.5)
 |LGPL|[libnl](sources/libnl-3.2.24)
@@ -45,10 +45,10 @@ You can download Open Source Archives from following table:
 |LGPL2|[libudev-private](sources/libudev-private-164)
 |LGPL2|[libusb](sources/libusb-0.1.12)
 |LGPL2|[libusb_1_0](sources/libusb_1_0-1.0.19)
-|LGPL2|[util-linux-ng (lib/canonicalize.c)](sources/util-linux-ng-2.26)
-|LGPL2|[util-linux-ng (lib/fileutils.c)](sources/util-linux-ng-2.26)
-|LGPL2|[util-linux-ng (lib/randutils.c)](sources/util-linux-ng-2.26)
-|LGPL2|[util-linux-ng (lib/strutils.c)](sources/util-linux-ng-2.26)
-|LGPL2|[util-linux-ng (libblkid)](sources/util-linux-ng-2.26)
-|LGPL2|[util-linux-ng (libfdisk)](sources/util-linux-ng-2.26)
-|LGPL2|[util-linux-ng (libmount)](sources/util-linux-ng-2.26)
+|LGPL2|[util-linux-ng (lib/canonicalize.c)](sources/util-linux-ng-2.28)
+|LGPL2|[util-linux-ng (lib/fileutils.c)](sources/util-linux-ng-2.28)
+|LGPL2|[util-linux-ng (lib/randutils.c)](sources/util-linux-ng-2.28)
+|LGPL2|[util-linux-ng (lib/strutils.c)](sources/util-linux-ng-2.28)
+|LGPL2|[util-linux-ng (libblkid)](sources/util-linux-ng-2.28)
+|LGPL2|[util-linux-ng (libfdisk)](sources/util-linux-ng-2.28)
+|LGPL2|[util-linux-ng (libmount)](sources/util-linux-ng-2.28)
