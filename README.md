@@ -1,5 +1,5 @@
 Open Source Software used in **Parrot SkyController2**.  
-Firmware version: **1.0.3**  
+Firmware version: **1.0.4**  
 Unless stated otherwise, later versions of the firmware
 use these same software modules.
 
@@ -33,7 +33,6 @@ You can download Open Source Archives from following table:
 |GPL2|[udevd](sources/udevd-164)
 |GPL2|[usbutils](sources/usbutils-006)
 |GPL2|[util-linux-ng](sources/util-linux-ng-2.28)
-|LGPL|[libc-arm-2012-03-fix](sources/libc-arm-2012-03-fix-unknown)
 |LGPL|[libconfig](sources/libconfig-1.5)
 |LGPL|[libnl](sources/libnl-3.2.24)
 |LGPL|[lttng-ust](sources/lttng-ust-2.1.1)
