@@ -35,7 +35,8 @@ int iioutils_break_up_name(const char *full_name, char **generic_name)
 	char *current;
 	char *w, *r;
 	char *working, *prefix = "";
-	int i, ret;
+	int ret;
+	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(iio_direction); i++)
 		if (!strncmp(full_name, iio_direction[i],

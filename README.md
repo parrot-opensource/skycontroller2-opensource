@@ -1,5 +1,5 @@
 Open Source Software used in **Parrot SkyController2**.  
-Firmware version: **1.0.4**  
+Firmware version: **1.0.6**  
 Unless stated otherwise, later versions of the firmware
 use these same software modules.
 
@@ -15,19 +15,17 @@ You can download Open Source Archives from following table:
 |GPL|[busybox](sources/busybox-unknown)
 |GPL|[evtest](sources/evtest-unknown)
 |GPL|[htop](sources/htop-1.0.2)
-|GPL|[lttng-ust (liblttng-ust-ctl/ustctl.c)](sources/lttng-ust-2.1.1)
 |GPL|[memtester](sources/memtester-4.2.2)
 |GPL|[procps](sources/procps-3.2.8)
 |GPL|[tree](sources/tree-1.6.0)
 |GPL2|[dfu-programmer](sources/dfu-programmer-0.7.2)
 |GPL2|[dnsmasq](sources/dnsmasq-2.66)
-|GPL2|[e2fsprogs](sources/e2fsprogs-1.42.11)
+|GPL2|[e2fsprogs](sources/e2fsprogs-1.42.12)
 |GPL2|[iftop](sources/iftop-1.0pre4)
 |GPL2|[iio_generic_buffer](sources/iio_generic_buffer-unknown)
+|GPL2|[iptables](sources/iptables-1.4.21)
 |GPL2|[linux](sources/linux-3.4.11)
 |GPL2|[lsiio](sources/lsiio-unknown)
-|GPL2|[lttng-modules](sources/lttng-modules-unknown)
-|GPL2|[lttng-tools](sources/lttng-tools-2.1.1)
 |GPL2|[net-tools](sources/net-tools-1.60)
 |GPL2|[udevadm](sources/udevadm-164)
 |GPL2|[udevd](sources/udevd-164)
@@ -35,7 +33,6 @@ You can download Open Source Archives from following table:
 |GPL2|[util-linux-ng](sources/util-linux-ng-2.28)
 |LGPL|[libconfig](sources/libconfig-1.5)
 |LGPL|[libnl](sources/libnl-3.2.24)
-|LGPL|[lttng-ust](sources/lttng-ust-2.1.1)
 |LGPL|[userspace-rcu](sources/userspace-rcu-0.9.1)
 |LGPL2|[libdaemon](sources/libdaemon-0.14)
 |LGPL2|[libiio](sources/libiio-unknown)

@@ -51,7 +51,7 @@ enum autochan {
  * Has the side effect of filling the channels[i].location values used
  * in processing the buffer output.
  **/
-int size_from_channelarray(struct iio_channel_info *channels, int num_channels)
+static int size_from_channelarray(struct iio_channel_info *channels, int num_channels)
 {
 	int bytes = 0;
 	int i = 0;
@@ -70,7 +70,7 @@ int size_from_channelarray(struct iio_channel_info *channels, int num_channels)
 	return bytes;
 }
 
-void print1byte(uint8_t input, struct iio_channel_info *info)
+static void print1byte(uint8_t input, struct iio_channel_info *info)
 {
 	/*
 	 * Shift before conversion to avoid sign extension
@@ -87,7 +87,7 @@ void print1byte(uint8_t input, struct iio_channel_info *info)
 	}
 }
 
-void print2byte(uint16_t input, struct iio_channel_info *info)
+static void print2byte(uint16_t input, struct iio_channel_info *info)
 {
 	/* First swap if incorrect endian */
 	if (info->be)
@@ -110,7 +110,7 @@ void print2byte(uint16_t input, struct iio_channel_info *info)
 	}
 }
 
-void print4byte(uint32_t input, struct iio_channel_info *info)
+static void print4byte(uint32_t input, struct iio_channel_info *info)
 {
 	/* First swap if incorrect endian */
 	if (info->be)
@@ -133,7 +133,7 @@ void print4byte(uint32_t input, struct iio_channel_info *info)
 	}
 }
 
-void print8byte(uint64_t input, struct iio_channel_info *info)
+static void print8byte(uint64_t input, struct iio_channel_info *info)
 {
 	/* First swap if incorrect endian */
 	if (info->be)
@@ -169,7 +169,7 @@ void print8byte(uint64_t input, struct iio_channel_info *info)
  *			      to fill the location offsets.
  * @num_channels:	number of channels
  **/
-void process_scan(char *data,
+static void process_scan(char *data,
 		  struct iio_channel_info *channels,
 		  int num_channels)
 {
@@ -240,7 +240,7 @@ static int enable_disable_all_channels(char *dev_dir_name, int enable)
 	return 0;
 }
 
-void print_usage(void)
+static void print_usage(void)
 {
 	fprintf(stderr, "Usage: generic_buffer [options]...\n"
 		"Capture, convert and output data from IIO device buffer\n"
@@ -259,8 +259,9 @@ int main(int argc, char **argv)
 	unsigned long num_loops = 2;
 	unsigned long timedelay = 1000000;
 	unsigned long buf_len = 128;
+	unsigned long j;
 
-	int ret, c, i, j, toread;
+	int ret, c, i, toread;
 	int fp;
 
 	int num_channels;
@@ -541,13 +542,14 @@ int main(int argc, char **argv)
 	if (ret < 0)
 		goto error_close_buffer_access;
 
-	if (!notrigger)
+	if (!notrigger) {
 		/* Disconnect the trigger - just write a dummy name. */
 		ret = write_sysfs_string("trigger/current_trigger",
 					 dev_dir_name, "NULL");
 		if (ret < 0)
 			fprintf(stderr, "Failed to write to %s\n",
 				dev_dir_name);
+	}
 
 error_close_buffer_access:
 	if (close(fp) == -1)
