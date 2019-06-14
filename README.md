@@ -1,5 +1,5 @@
 Open Source Software used in **Parrot SkyController2**.  
-Firmware version: **1.0.7**  
+Firmware version: **1.0.9**  
 Unless stated otherwise, later versions of the firmware
 use these same software modules.
 
